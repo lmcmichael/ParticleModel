@@ -1,1 +1,7 @@
-The contents of this directory calculate a stochastic differential equation to predict the position and velocity of fluid particles. 
+The contents of this directory contain the necessary files to calculate a stochastic differential equation to predict the x-position and zonal velocity of fluid particles and compare the results with plume widths from large-eddy simulation. This code can easily be extended to the y-direction.  
+
+The forcing files, which include the time series of variance, relaxation timescale, and mean wind sampled from the LES are all included. New_TS refers to the modified relaxation timescale calculation, which only considers the u-component of the TKE. 
+
+In the simplified particle model a free parameter, C_0, must be calculated. Particlemodel_LSE.m is the script used to optimize C_0 for the Control case. The default number of particles is set to 10,000 and the time step is set to 2 minutes. 
+
+After C_0 is found, it is then used in the ensemble particle model code (particlemodel_control.m, particlemodel_noshear.m, particlemodel_strongshear.m). This code calculates the average of a specified number of ensemble members (default is 20) with a lower number of particles (default is 200). Errors from the LES are calculated and plotted. 
