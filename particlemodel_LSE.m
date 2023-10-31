@@ -15,10 +15,12 @@ part_num = 10000.0; %number of particles to be modeled
 dt = 120; %in seconds
 
 %convert time to seconds 
-time_s = double((time - 12.0)*3600.0);
+les_spinup_time = 12.0; %
+time_s = double((time - les_spinup_time)*3600.0);
 
-time0 = time - 12.0;
+time0 = time - les_spinup_time;
 t = linspace(0.5,36,72);
+end_time = ceil(max(t));
 t_s(:) = t(:)*3600.0; %s
 
 %start time for particle model
@@ -224,13 +226,13 @@ end
     end
 
 figure;
-plot(t(t_start:72),width_1std_100_control(t_start:72),'LineWidth',3,'color','b')
+plot(t(t_start:end_time),width_1std_100_control(t_start:end_time),'LineWidth',3,'color','b')
 xlabel('time since injection (hrs)')
 ylabel('Plume Width (km)')
 hold on
-plot(t(t_start:71),part_width_new((t_start+1):72),'LineWidth',1.5,'color','b','LineStyle','--')
-plot(t(t_start:71),part_width_st1_new((t_start+1):72),'LineWidth',1.5,'color','magenta','LineStyle','--')
-plot(t(t_start:71),part_width_st2_new((t_start+1):72),'LineWidth',1.5,'color','cyan','LineStyle','--')
+plot(t(t_start:(end_time-1)),part_width_new((t_start+1):(end_time)),'LineWidth',1.5,'color','b','LineStyle','--')
+plot(t(t_start:(end_time-1)),part_width_st1_new((t_start+1):(end_time)),'LineWidth',1.5,'color','magenta','LineStyle','--')
+plot(t(t_start:(end_time-1)),part_width_st2_new((t_start+1):(end_time)),'LineWidth',1.5,'color','cyan','LineStyle','--')
 plot(t,con_growth,'LineWidth',1,'Color','black','LineStyle','-.')
 plot(t,sq_growth,'LineWidth',2,'Color','black','LineStyle',':')
 ylim([0 60]);
@@ -248,16 +250,16 @@ for n=2:length(t)
 end
 
 figure;
-plot(t(t_start:71),err((t_start+1):72),'LineWidth',1.5,'color','b','LineStyle','--')
+plot(t(t_start:(end_time-1)),err((t_start+1):end_time),'LineWidth',1.5,'color','b','LineStyle','--')
 xlabel('time since injection (hrs)')
 ylabel('Particle Model Plume Width Error (km)')
 hold on
-plot(t(t_start:71),err_st1((t_start+1):72),'LineWidth',1.5,'color','magenta','LineStyle','--')
-plot(t(t_start:71),err_st2(t_start+1:72),'LineWidth',1.5,'color','cyan','LineStyle','--')
-ylim([-5 5]);
+plot(t(t_start:(end_time-1)),err_st1((t_start+1):end_time),'LineWidth',1.5,'color','magenta','LineStyle','--')
+plot(t(t_start:(end_time-1)),err_st2(t_start+1:end_time),'LineWidth',1.5,'color','cyan','LineStyle','--')
+ylim([-10 10]);
 xlim([0 36]);
 plot([min(t), max(t)], [0, 0], 'k--');
 title('PM and LES comparison')
 pbaspect([2 1 1]);
 patch([15.5 15.5 25.0 25.0 15.5],[-50 120 120 -50 -50], [0.7 0.7 0.7],'FaceAlpha',0.1);
-legend('domain average error','in-plume error', 'plume edge error','Location','southeast')
+legend('domain average error','in-plume error', 'plume edge error','Location','northeast')
