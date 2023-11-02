@@ -47,7 +47,7 @@ NEW_TS_interp = interp1(time_s,NEW_TS,new_time);
 NEW_TS_st1_interp = interp1(time_s,NEW_TS_st1,new_time);
 NEW_TS_st2_interp = interp1(time_s,NEW_TS_st2,new_time);
 
-%initialize particle positions based on first LES datapoint (t = 2.0 hr)
+%initialize particle positions based on first LES datapoint (t = 0.5 hr)
 std_dev = 0.5*width_1std_100_control(t_start)*1000.0; %1 std dev in meters 
 mu = 0;
 
@@ -177,7 +177,7 @@ for m = 1:c_loop
 
     downsamplingfactor = ceil((double(length(new_time))/double(length(width_1std_100_control))));
 
-    % grab every other particle width to match LES data
+    % downsample high time resolution array to LES output
     part_width_avg(:,m) = part_width(1:downsamplingfactor:end,m);
     part_width_avg_st1(:,m) = part_width_st1(1:downsamplingfactor:end,m);
     part_width_avg_st2(:,m) = part_width_st2(1:downsamplingfactor:end,m);
@@ -187,7 +187,7 @@ for m = 1:c_loop
     error_st2(m) = 0;
     for n=(t_start+1):length(t)
 
-        %calculate least square error
+        %calculate accumulated least square error
         error(m) = error(m) + sum((width_1std_100_control(n-1) - part_width_avg(n,m)).^2.0);
         error_st1(m) = error_st1(m) + sum((width_1std_100_control(n-1) - part_width_avg_st1(n,m)).^2.0);
         error_st2(m) = error_st2(m) + sum((width_1std_100_control(n-1) - part_width_avg_st2(n,m)).^2.0);
