@@ -7,9 +7,9 @@ ens_num = 20 ;
 part_num = 200.0; 
 
 %C_0 values from large particle number Control runs
-C_0 = -0.52;
-C_0_st1 = -0.39;
-C_0_st2 = -0.17;
+C_0 = 0.15;
+C_0_st1 = 0.50;
+C_0_st2 = 0.50;
 
 %model fluctations in velocity and predict particle position
 
@@ -97,9 +97,9 @@ dt_ind_start = (double(dt_data)/double(dt))*(dt_ind-1);
 for m = 1:ens_num
 
     %calculate relaxation timescale from k/eps from LES
-    T_L = NEW_TS_interp.*(1/(0.5 + 0.75.*C_0));
-    T_L_st1 = NEW_TS_st1_interp.*(1/(0.5 + 0.75.*C_0_st1));
-    T_L_st2 = NEW_TS_st2_interp.*(1/(0.5 + 0.75.*C_0_st2));
+    T_L = NEW_TS_interp.*(1/(0.75.*C_0));
+    T_L_st1 = NEW_TS_st1_interp.*(1/(0.75.*C_0_st1));
+    T_L_st2 = NEW_TS_st2_interp.*(1/(0.75.*C_0_st2));
 
     %calculate langevin equation for each particle
 
