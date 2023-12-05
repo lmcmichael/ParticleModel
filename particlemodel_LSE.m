@@ -109,20 +109,20 @@ ylabel('Frequency');
 dt_ind_start = (double(dt_data)/double(dt))*(dt_ind-1);
 
 %initialize C_0
-init_c = 0.0; %initial guess of C_0
+init_c = 0.01; %initial guess of C_0
 
 C_0 = init_c;
 C_0_st1 = init_c;
 C_0_st2 = init_c;
 
 %loop through a range of C_0 to find optimal fit for entire duration
-%loop from 0.0 to -0.6 (by 0.1 increments) in current configuration
+%loop from 0.0 to 0.6 (by 0.01 increments) in current configuration
 for m = 1:c_loop
 
     %calculate relaxation timescale from k/eps from LES
-    T_L = NEW_TS_interp.*(1/(0.5 + 0.75.*C_0));
-    T_L_st1 = NEW_TS_st1_interp.*(1/(0.5 + 0.75.*C_0_st1));
-    T_L_st2 = NEW_TS_st2_interp.*(1/(0.5 + 0.75.*C_0_st2));
+    T_L = NEW_TS_interp.*(1/(0.75.*C_0));
+    T_L_st1 = NEW_TS_st1_interp.*(1/(0.75.*C_0_st1));
+    T_L_st2 = NEW_TS_st2_interp.*(1/(0.75.*C_0_st2));
 
     %calculate langevin equation for each particle
 
@@ -194,9 +194,9 @@ for m = 1:c_loop
     
     end
 
-    C_0 = init_c - 0.01*m;
-    C_0_st1 = init_c - 0.01*m;
-    C_0_st2 = init_c - 0.01*m;
+    C_0 = init_c + 0.01*m;
+    C_0_st1 = init_c + 0.01*m;
+    C_0_st2 = init_c + 0.01*m;
 
 end
 
@@ -206,9 +206,9 @@ end
     C_0_ind_st2 = find(error_st2 == min(error_st2));
 
     %best fit C_0 value
-    C_0_val = init_c - (C_0_ind*0.01);
-    C_0_val_st1 = init_c - (C_0_ind_st1*0.01);
-    C_0_val_st2 = init_c - (C_0_ind_st2*0.01);
+    C_0_val = init_c + (C_0_ind*0.01);
+    C_0_val_st1 = init_c + (C_0_ind_st1*0.01);
+    C_0_val_st2 = init_c + (C_0_ind_st2*0.01);
 
     %pick out best performing particle width
     part_width_new = part_width_avg(:,C_0_ind);
