@@ -8,7 +8,7 @@
 %max number of C_0 loops for parameter fitting
 c_loop = 60;
 
-part_num = 10000.0; %number of particles to be modeled
+part_num = 20000.0; %number of particles to be modeled
 
 %model fluctations in velocity and predict particle position
 
