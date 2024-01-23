@@ -6,7 +6,7 @@ ens_num = 50 ;
 %number of particles to be modeled
 part_num = 100.0; 
 
-%C_0 values from large particle number Control runs
+%C_0 values from large particle number Control runs (using particlemodel_LSE.m)
 C_0 = 0.15;
 C_0_st1 = 0.50;
 C_0_st2 = 0.50;
