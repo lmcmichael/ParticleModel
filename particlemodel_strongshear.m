@@ -1,10 +1,10 @@
 %simplified Langevin model to calculate ensemble of particle trajectories 
 
 %number of ensemble members
-ens_num = 20 ;
+ens_num = 50 ;
 
 %number of particles to be modeled
-part_num = 200.0; 
+part_num = 100.0; 
 
 %C_0 values from large particle number Control runs
 C_0 = 0.15;
