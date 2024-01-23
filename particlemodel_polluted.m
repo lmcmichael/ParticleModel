@@ -1,4 +1,6 @@
 %simplified Langevin model to calculate ensemble of particle trajectories 
+%ship track and plume edge statistics for the polluted case are corrupted after the first 15 hours
+%of the simulation due to an aerosol threshold for the ship track that was too stringent.
 
 %number of ensemble members
 ens_num = 50 ;
@@ -7,11 +9,6 @@ ens_num = 50 ;
 part_num = 100.0; 
 
 %C_0 values from large particle number Control runs
-% C_0 = -0.52;
-% C_0_st1 = -0.38;
-% C_0_st2 = -0.16;
-
-
 C_0 = 0.5;
 %C_0_st1 = -0.2;
 %C_0_st2 = -0.16;
