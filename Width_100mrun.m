@@ -1,3 +1,5 @@
+%code to compute the Guassian fit from the boundary-layer-averaged aerosol concentration in the LES
+
 nt = 72; %number of samples (half hour intervals)
 nx = 2048;
 ny = 256;
