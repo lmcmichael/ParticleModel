@@ -1,4 +1,4 @@
-The contents of this directory contain the necessary files to calculate a stochastic differential equation to predict the x-position and zonal velocity of fluid particles and compare the results with plume widths from large-eddy simulation. This code can easily be extended to the y-direction.  
+The contents of this directory contain the necessary files to calculate a Langevin stochastic differential equation to predict the x-position and zonal velocity of fluid particles and compare the results with plume widths from large-eddy simulation. This code can easily be extended to the y-direction.  
 
 The forcing files, which include the time series of variance, relaxation timescale, and mean wind sampled from the LES are all included. New_TS refers to the modified relaxation timescale calculation, which only considers the u-component of the TKE. 
 
