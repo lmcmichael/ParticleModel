@@ -1,6 +1,6 @@
 The contents of this directory contain the necessary files to calculate a Langevin stochastic differential equation to predict the x-position and zonal velocity of fluid particles and compare the results with plume widths from large-eddy simulation. This code can easily be extended to the y-direction.  
 
-The forcing files, which include the time series of variance, relaxation timescale, and mean wind sampled from the LES are all included. New_TS refers to the modified relaxation timescale calculation, which only considers the u-component of the TKE. 
+The forcing files, which include the time series of variance, relaxation timescale (k/epsilon), and mean wind sampled from the LES are all included. New_TS refers to the modified relaxation timescale calculation (MEAN_TS is the original formulation), which only considers the u-component of the TKE. st1 quantities are conditionally sampled in the ship track region, while st2 statistics were sampled from the plume edge. 
 
 In the simplified particle model a free parameter, C_0, must be calculated. Particlemodel_LSE.m is the script used to optimize C_0 for the Control case. The default number of particles is set to 10,000 and the time step is set to 2 minutes. 
 
