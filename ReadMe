@@ -5,3 +5,5 @@ The forcing files, which include the time series of variance, relaxation timesca
 In the simplified particle model a free parameter, C_0, must be calculated. Particlemodel_LSE.m is the script used to optimize C_0 for the Control case. The default number of particles is set to 20,000 and the time step is set to 2 minutes. 
 
 After C_0 is found, it is then used in the ensemble particle model code (particlemodel_control.m, particlemodel_noshear.m, particlemodel_strongshear.m). This code calculates the average of a specified number of ensemble members (default is 50) with a lower number of particles (default is 100). Errors from the LES are calculated and plotted. 
+
+The IDL routine to calculate the input parameters from the conditinoally-sampled LES data is ship_shear.pro. Aerosol_3Dto2D.pro is used to average 3-D boundary-layer aerosol concentration for the estimation of plume width. Plot_crossection.pro plots the x-y views of various LES quantities. LES_width.pro is used to estimate the 1 standard deviation width of LES aerosol concentration. Plot_widths.m plots various plume widths.
