@@ -1,3 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          PM-ABL v1.0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %simplified Langevin model to simulate an ensemble of zonal velocity particles
 %this code is used for finding the optimal C_0 parameters for the Control
 %simulation. After C_0 has been optimized, use ensemble code to run many
